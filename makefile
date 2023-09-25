@@ -9,4 +9,4 @@ stb_image_write.cpp: stb_image_write.h
 imageLib.o: imageLib.cpp
 	g++ imageLib.cpp -c
 clean:
-	rm mandelbrot stb_image_write.o mandelib.o
+	rm mandelbrot stb_image_write.o imageLib.o
