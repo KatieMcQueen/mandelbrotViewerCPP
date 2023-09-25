@@ -1,0 +1,3 @@
+this is an attempt to make a simple mandelbrot viewer.
+
+the stb_image_write.h is an external single header image creation library
