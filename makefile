@@ -1,4 +1,4 @@
-mandelbrot: mandelbrot.cpp stb_image_write.o imageLib.o
+mandelbrot: mandelbrot.cpp stb_image_write.o imageLib.o 
 	g++ mandelbrot.cpp stb_image_write.o imageLib.o -o mandelbrot
 stb_image_write.o: stb_image_write.cpp
 	g++ stb_image_write.cpp -c
