@@ -4,6 +4,7 @@
 #include"imageLib.hpp"
 #include<string>
 #include"complexLib.hpp"
+#include"colormaps.hpp"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ int evaluate(complex<long double> c, int iterations)
       return i;
     }
   }
-  return 0;
+  return -1;
 }
 
 const char* makeName(string name)
@@ -53,26 +54,47 @@ const char* makeName(string name)
   return name.c_str();
 }
 
+RGB normalToRGB(double *value)
+{
+  RGB color;
+
+  color.r = (uint8_t)(255.9 * value[0]);
+  color.g = (uint8_t)(255.9 * value[1]);
+  color.b = (uint8_t)(255.9 * value[2]);
+
+  return color;
+}
+
+
 RGB getColor(int iterations)
 {
   RGB color;
-  color.r = iterations;
-  color.g = 0;
-  color.b = 0;
+  if(iterations >= 0)
+  {
+    iterations = (iterations + 260) % 510; //510 is how many elements are in twilight by defalult
+    color = normalToRGB(twilight[iterations]);
+  } 
+  else 
+  {
+    color.r = 0;
+    color.g = 0;
+    color.b = 0;
+  } 
+
   return color;
 }
 
 int main()
 {
-  int imageWidth = 1920;
-  int imageHeight = 1080;
+  int imageWidth = 2560;
+  int imageHeight = 1440;
 
   const int CHANNEL_NUM = 3;
 
   complex<long double> corner1(-2.0, -2.0);
   complex<long double> corner2(2.0, 2.0);
 
-  const int MAX_ITERATIONS = 100;
+  const int MAX_ITERATIONS = 510;
 
   ComplexField plane(imageWidth, imageHeight, corner1, corner2);
 
