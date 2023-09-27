@@ -12,13 +12,14 @@ class ComplexField
     int height;
     std::complex<long double> corner1;
     std::complex<long double> corner2;
-    std::complex<long double> *field;
+    long double widthImaginary;      //the length of our window into the imaginary plane
+    long double heightImaginary;     //the height of our window into the imaginary plane
+    long double cornerReal;          //the real component of corner 1
+    long double cornerImaginary;     //the imaginary component of corner 2
+    
   public:
     ComplexField(int w, int h, std::complex<long double> c1, std::complex<long double> c2);
-    ~ComplexField();
     std::complex<long double> getValue(int x, int y);
-    void setValue(int x, int y);
-    void printField();
 
     int getHeight()
     {return height;}
@@ -31,9 +32,6 @@ class ComplexField
 
     std::complex<long double> getCorner2()
     {return corner2;}
-
-    std::complex<long double>* getField()
-    {return field;}
 };
 
 

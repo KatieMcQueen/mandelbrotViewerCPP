@@ -1,5 +1,6 @@
 /* 
- * the imlementation for the complexLib header. I decided not to use this, for reasons explained in that header's comment
+ * an implementation of a simple library. the field class holds some static variables that 
+ * would be annoying to pass every time
  */
 #include<complex>
 #include"complexLib.hpp"
@@ -13,38 +14,27 @@ ComplexField::ComplexField(int w, int h, complex<long double> c1, complex<long d
   height = h;
   corner1 = c1;
   corner2 = c2;
-  field = new complex<long double>[w * h];
+  //the width of the imaginary plane. this is the abs of the difference of the real components of the corners
+  widthImaginary = abs(real(corner2) - real(corner1));
+  //the height of the imaginary plane. this is the abs of the difference of the imaginary components of the corners
+  heightImaginary = abs(imag(corner2) - imag(corner1));
+  //the real component of corner 1
+  cornerReal = real(corner1);
+  //the imaginary component of corner 2
+  cornerImaginary = imag(corner1);
 }
 
-ComplexField::~ComplexField()
-{
-  delete [] field;
-}
-
-//get the complex value of a particular pixel
+//get the complex value of a pixel
 complex<long double> ComplexField::getValue(int x, int y)
 {
-  //this converts the 2d coordinates into the 1d address of the location in the list
-  int addr = width * y + x;
-  return field[addr];
-}
-
-void setValue(int x, int y, complex<long double> value)
-{
-  int addr = width * y + x;
-  field[addr] = val;
-}
-
-void printField()
-{
-  int size = width * height;
-  for(i = 0; i < size; i++)
-  {
-    int y = i / width;
-    int x = i - (y * width);
-    complex<long double> value = field[i];
-    cout << "The complex value at (" << x << ',' << y << ") is: " << value << endl;
-  }
+  //see complexScaling.png for a visual explanation of this algorithm.
+  //we just need to pick a complex value closest to our given pixel
+  long double scalerx = (float)x / (float)width;
+  long double scalery = (float)y / (float)height;
+  long double realComponent = widthImaginary * scalerx + cornerReal;
+  long double imaginaryComponent = heightImaginary * scalery + cornerImaginary;
+  complex<long double> complexPoint(realComponent, imaginaryComponent);
+  return complexPoint;
 }
 
 

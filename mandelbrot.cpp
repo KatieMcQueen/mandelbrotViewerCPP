@@ -3,6 +3,7 @@
 #include<complex>
 #include"imageLib.hpp"
 #include<string>
+#include"complexLib.hpp"
 
 using namespace std;
 
@@ -52,7 +53,12 @@ const char* makeName(string name)
   return name.c_str();
 }
 
-
+RGB getColor(int iterations)
+{
+  RGB color;
+  color.r = iterations;
+  return color;
+}
 
 int main()
 {
@@ -60,6 +66,13 @@ int main()
   int imageHeight = 1080;
 
   const int CHANNEL_NUM = 3;
+
+  complex<long double> corner1(-2.0, -2.0);
+  complex<long double> corner2(2.0, 2.0);
+
+  const int MAX_ITERATIONS = 100;
+
+  ComplexField plane(imageWidth, imageHeight, corner1, corner2);
 
   Image brot(imageWidth, imageHeight, CHANNEL_NUM);
   RGB color;
@@ -73,13 +86,10 @@ int main()
   {
     for(int i = 0; i < width; ++i)
     {
-      float r = (float)i / (float)width;
-      float g = (float)j / (float)height;
-      float b = 0.2f;
+      complex<long double> point = plane.getValue(i,j);
+      int value = evaluate(point, MAX_ITERATIONS);
+      color = getColor(value);
 
-      color.r = uint8_t(255.9 * r);
-      color.g = uint8_t(255.9 * g);
-      color.b = uint8_t(255.9 * b);
   
       brot.setPixel(i,j,color);
     }

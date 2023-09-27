@@ -1,5 +1,5 @@
-mandelbrot: mandelbrot.cpp stb_image_write.o imageLib.o 
-	g++ mandelbrot.cpp stb_image_write.o imageLib.o -o mandelbrot
+mandelbrot: mandelbrot.cpp stb_image_write.o imageLib.o complexLib.o
+	g++ mandelbrot.cpp stb_image_write.o imageLib.o complexLib.o -o mandelbrot
 stb_image_write.o: stb_image_write.cpp
 	g++ stb_image_write.cpp -c
 stb_image_write.cpp: stb_image_write.h
@@ -8,5 +8,7 @@ stb_image_write.cpp: stb_image_write.h
 	echo "#include \"stb_image_write.h\"" >> stb_image_write.cpp
 imageLib.o: imageLib.cpp
 	g++ imageLib.cpp -c
+complexLib.o: complexLib.cpp
+	g++ complexLib.cpp -c
 clean:
-	rm mandelbrot stb_image_write.o imageLib.o
+	rm mandelbrot stb_image_write.o imageLib.o complexLib.o
