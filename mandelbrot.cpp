@@ -57,6 +57,8 @@ RGB getColor(int iterations)
 {
   RGB color;
   color.r = iterations;
+  color.g = 0;
+  color.b = 0;
   return color;
 }
 
@@ -90,6 +92,10 @@ int main()
       int value = evaluate(point, MAX_ITERATIONS);
       color = getColor(value);
 
+      /*
+      cout << "The complex point " << point << " at (" << i << ',' << j << ") iterates " << value;
+      cout << " times. it has a color of (" << (int)color.r << ',' << (int)color.g << ',' << (int)color.b << ")" << endl;
+      */
   
       brot.setPixel(i,j,color);
     }
