@@ -5,6 +5,7 @@ At time of writing there are two pieces of code pulled from external sources.
 stb_image_write.h is a single header c library in the public domain that's used to provide the program with image creation capabilities. 
 It is available at: https://github.com/nothings/stb
 Additionally the color value table from the matplotlib colormap twilight is used to color the image. It has been converted to c++ syntax. No other code from twilight is used. As far as I can tell twilight is liscensed under the bsd-3 liscense, which permits this type of use. The text of that liscense is available in colormaps.cpp.
+Twilighr is available at https://github.com/bastibe/twilight.
 
 Things I learned:
 This was my first time working with structs and my first time working with classes in years. 
