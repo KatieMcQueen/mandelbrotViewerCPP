@@ -20,5 +20,12 @@ Unfortunately I'm not entirely sure which approach to take and am currently expl
 I'd also like to explore realtime rendering and interactivity, but those introduce significant complexity with shader coding and ui libraries respectively. I don't expect to explore those paths in the near future.
 
 Image gallery:
+
 The first output
 ![First output](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/firstOutput.png)
+
+The first colormap test
+![First color](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/colormapFirstTest.png)
+
+The current final product
+![Final](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/twilightBackground.png)
