@@ -18,3 +18,7 @@ An interesting potential user interface would require a radical expansion of the
 The resolution on the fractal also isn't great at the moment. At the interesting regions of higher complexity the pixels next to each other have different enough values that they "jump" in clolor values. This means that the large structure of the fractal can be clearly seen, but the interesting details of the chaotic geometry near the borders of the fractal become and unreadable pixelated mess. 
 Unfortunately I'm not entirely sure which approach to take and am currently exploring options to Improve the rendering of chaotic regions. The next atempt will likely be to oversample the region around each pixel and average the results. Unfortunately I'm skeptical this will actuall solve the underlying issue and will significanly increase runtimes.
 I'd also like to explore realtime rendering and interactivity, but those introduce significant complexity with shader coding and ui libraries respectively. I don't expect to explore those paths in the near future.
+
+Image gallery:
+The first output
+![First output](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/firstOutput.png)
