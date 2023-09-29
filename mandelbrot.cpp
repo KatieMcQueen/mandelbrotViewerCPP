@@ -110,7 +110,12 @@ int main()
   complex<long double> corner1;
   complex<long double> corner2;
 
-  getCorners(0, 0, 2, imageWidth, imageHeight, corner1, corner2);
+  cout << "Enteer the x, y, and r values seaparated by spaces: ";
+  long double coordinateX, coordinateY, viewRadius;
+  cin >> coordinateX, coordinateY, viewRadius;
+  cout << endl << coordinateX << " " << coordinateY << " " << viewRadius << endl; << endl;
+
+  getCorners(coordinateX, coordinateY, viewRadius, imageWidth, imageHeight, corner1, corner2);
 
   const int MAX_ITERATIONS = 510;
 
