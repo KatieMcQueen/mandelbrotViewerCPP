@@ -84,6 +84,22 @@ RGB getColor(int iterations)
   return color;
 }
 
+void getCorners(long double x, long double y, long double r, int width, int height, complex<long double> &corner1, complex<long double> &corner2)
+{
+  // get the imaginary/y component by adding and subtracting the radius from the y coordinate. 
+  // then scale the x component based on the ratio of the height and width
+  // the formula for the width in the complex plane is 2rw/h to get the ammount to add and subtract we divide by 2 so rw/h
+  long double corner1Imaginary = y - r;
+  long double corner2Imaginary = y + r;
+  long double imaginaryWidth = (r * width) / height;
+  long double corner1Real = x - imaginaryWidth;
+  long double corner2Real = x + imaginaryWidth;
+  corner1.real(corner1Real);
+  corner1.imag(corner1Imaginary);
+  corner2.real(corner2Real);
+  corner2.imag(corner2Imaginary);
+}
+
 int main()
 {
   int imageWidth = 2560;
@@ -91,8 +107,10 @@ int main()
 
   const int CHANNEL_NUM = 3;
 
-  complex<long double> corner1(-2.0, -2.0);
-  complex<long double> corner2(2.0, 2.0);
+  complex<long double> corner1;
+  complex<long double> corner2;
+
+  getCorners(0, 0, 2, imageWidth, imageHeight, corner1, corner2);
 
   const int MAX_ITERATIONS = 510;
 
