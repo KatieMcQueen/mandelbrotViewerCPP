@@ -112,8 +112,8 @@ int main()
 
   cout << "Enteer the x, y, and r values seaparated by spaces: ";
   long double coordinateX, coordinateY, viewRadius;
-  cin >> coordinateX, coordinateY, viewRadius;
-  cout << endl << coordinateX << " " << coordinateY << " " << viewRadius << endl; << endl;
+  cin >> coordinateX >> coordinateY >> viewRadius;
+  cout << endl << coordinateX << " " << coordinateY << " " << viewRadius << endl;
 
   getCorners(coordinateX, coordinateY, viewRadius, imageWidth, imageHeight, corner1, corner2);
 
