@@ -10,3 +10,5 @@ colormapFirstTest was the first test with a proper colormap
 colormapShifted.png shifted the colormap 180 degrees for a better color pallate in my opinion
 zeroBug.png was a funny bug I wanted to preserve. I initally assumed all values not in the set would be greator than 1, so I figured I could return a zero for any point "in the set" and then color any zero points black. Unfortunately points that start outside the escape radious are also zero, so this colored all those points zero as well. Interestingly this bug also revealed how badly stretched my implementation currently is. that oval represents a constant radious and should be circular.
 twilightBackground.png gonna become my new background image.
+I fixed the scaling and now have better backgrounds
+render 10 is interesting because it demonstrates how lack of iterations can limit the depth of zooms. there are two limiting factors, precision in the arithmetic, and how many iterations your machine can handle.

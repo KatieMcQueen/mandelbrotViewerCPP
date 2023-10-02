@@ -117,7 +117,7 @@ int main()
 
   getCorners(coordinateX, coordinateY, viewRadius, imageWidth, imageHeight, corner1, corner2);
 
-  const int MAX_ITERATIONS = 510;
+  const int MAX_ITERATIONS = 2000;
 
   ComplexField plane(imageWidth, imageHeight, corner1, corner2);
 
