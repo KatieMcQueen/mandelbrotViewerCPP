@@ -31,8 +31,11 @@ Image::~Image()
   delete [] imageData;
 }
 
+//the image data is flipped vertically by the image write library, we fix that flip here
 int Image::pixelIndex(int x, int y)
 {
+  //this is the flip
+  y = height - y - 1;
   return ((width * y + x) * channels);
 }
 

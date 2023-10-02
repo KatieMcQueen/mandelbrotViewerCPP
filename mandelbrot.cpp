@@ -110,7 +110,7 @@ int main()
   complex<long double> corner1;
   complex<long double> corner2;
 
-  cout << "Enteer the x, y, and r values seaparated by spaces: ";
+  cout << "Enter the x, y, and r values seaparated by spaces: ";
   long double coordinateX, coordinateY, viewRadius;
   cin >> coordinateX >> coordinateY >> viewRadius;
   cout << endl << coordinateX << " " << coordinateY << " " << viewRadius << endl;
