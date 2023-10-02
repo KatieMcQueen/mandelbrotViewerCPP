@@ -25,8 +25,21 @@ Image gallery:
 The first output
 ![First output](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/firstOutput.png)
 
-The first colormap test
-![First color](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/colormapFirstTest.png)
+Fixed with proper scaling
+![scaled well](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/fixedScaling.png)
 
-The current final product
-![Final](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/twilightBackground.png)
+A bug that deomonstrates the improper scaling(the black oval should be perfectly circular)
+![bad scaling](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/zeroBug.png)
+
+Some demonstration renders
+![sixth](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render6.png)
+![eleventh](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render11.png)
+![twelfth](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render12.png)
+![fourteenth](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render14.png)
+![fifteenth](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render15.png)
+![seventeenth](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render17.png)
+![eightenth](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render18.png)
+![twentyfirst](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render21.png)
+![twentysecond](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render22.png)
+![twentyfourth](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render24.png)
+![twentyfifth](https://github.com/KatieMcQueen/mandelbrotViewerCPP/blob/master/images/render25.png)
