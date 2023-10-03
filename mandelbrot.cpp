@@ -129,6 +129,8 @@ int main()
   int channels = brot.getChannels();
 
   int index = 0;
+  float percent = 0;
+  float percentPrev = 0;
   for(int j = 0; j < height; ++j)
   {
     for(int i = 0; i < width; ++i)
@@ -143,6 +145,12 @@ int main()
       */
   
       brot.setPixel(i,j,color);
+    }
+    percent = round((float)j / height * 100);
+    if(percent > percentPrev)
+    {
+      percentPrev = percent;
+      cout << "Finished row " << j << " out of " << height << ", " << percent << "\% done" << endl;
     }
   }
 
