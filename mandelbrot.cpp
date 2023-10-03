@@ -28,6 +28,7 @@ int evaluate(complex<long double> c, int iterations)
   return -1;
 }
 
+//adds the timestamp to a name string
 const char* makeName(string name)
 {
   //begin time and date fuckery
@@ -54,6 +55,7 @@ const char* makeName(string name)
   return name.c_str();
 }
 
+//takes a normalized color value and converts it to rgb
 RGB normalToRGB(double *value)
 {
   RGB color;
@@ -69,12 +71,12 @@ RGB normalToRGB(double *value)
 RGB getColor(int iterations)
 {
   RGB color;
-  if(iterations >= 0)
+  if(iterations >= 0) //if the point escaped
   {
     iterations = (iterations + 260) % 510; //510 is how many elements are in twilight by defalult
-    color = normalToRGB(twilight[iterations]);
+    color = normalToRGB(twilight[iterations]); //the values in twilight are normalized, this converts them to rgb
   } 
-  else 
+  else //if the point hasn't escaped.
   {
     color.r = 0;
     color.g = 0;
@@ -91,9 +93,11 @@ void getCorners(long double x, long double y, long double r, int width, int heig
   // the formula for the width in the complex plane is 2rw/h to get the ammount to add and subtract we divide by 2 so rw/h
   long double corner1Imaginary = y - r;
   long double corner2Imaginary = y + r;
+  //figure out the width of the imaginary window based on the image size and the radius. technically only half, but it works better.
   long double imaginaryWidth = (r * width) / height;
   long double corner1Real = x - imaginaryWidth;
   long double corner2Real = x + imaginaryWidth;
+  //assemble the pieces
   corner1.real(corner1Real);
   corner1.imag(corner1Imaginary);
   corner2.real(corner2Real);
@@ -107,14 +111,20 @@ int main()
 
   const int CHANNEL_NUM = 3;
 
+  //initializes the corners, these tell us the window into the complex plane we're looking through
   complex<long double> corner1;
   complex<long double> corner2;
 
+
+  //x, y, and r tell us how to find the corners, and thus what region of the set we're in.
+  //they're easier numbers to reason about
   cout << "Enter the x, y, and r values seaparated by spaces: ";
   long double coordinateX, coordinateY, viewRadius;
   cin >> coordinateX >> coordinateY >> viewRadius;
-  cout << endl << coordinateX << " " << coordinateY << " " << viewRadius << endl;
+  cout << "Rendering the region centered on: (" << coordinateX << ", " << coordinateY << "i) with a radius of: " << viewRadius << endl;
 
+  //this is a good candidate for being moved into the complex plane managing class. 
+  //image width and image height live there as variables anyway
   getCorners(coordinateX, coordinateY, viewRadius, imageWidth, imageHeight, corner1, corner2);
 
   const int MAX_ITERATIONS = 2000;
@@ -124,13 +134,15 @@ int main()
   Image brot(imageWidth, imageHeight, CHANNEL_NUM);
   RGB color;
 
+  //this is silly, dunno what to do yet, but it stinks
   int width = brot.getWidth();
   int height = brot.getHeight();
   int channels = brot.getChannels();
 
+  //the main loops that calculate the final value of the pixel
   int index = 0;
-  float percent = 0;
-  float percentPrev = 0;
+  float percent = 0; //variable that stores percent completed per line
+  float percentPrev = 0; //variable that stores the last displayed percentage
   for(int j = 0; j < height; ++j)
   {
     for(int i = 0; i < width; ++i)
@@ -146,7 +158,10 @@ int main()
   
       brot.setPixel(i,j,color);
     }
-    percent = round((float)j / height * 100);
+    //we want to display the percentage of the image completed
+    //but there's 2500+ lines, we want to only display about 100 every time our percent increases by an integer
+    //so we round off the float, then check if we're higher than the last time
+    percent = round((float)j / height * 100); //run after every line
     if(percent > percentPrev)
     {
       percentPrev = percent;
@@ -154,8 +169,10 @@ int main()
     }
   }
 
+  //this is the basename, then we append the date to it. 
   string baseName = "brotest";
 
+  //call our wrapper. make name takes the name and appends the date
   brot.writeImage(makeName(baseName));
 
   return 0;
