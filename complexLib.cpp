@@ -36,5 +36,3 @@ complex<long double> ComplexField::getValue(int x, int y)
   complex<long double> complexPoint(realComponent, imaginaryComponent);
   return complexPoint;
 }
-
-

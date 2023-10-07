@@ -134,38 +134,26 @@ int main()
   Image brot(imageWidth, imageHeight, CHANNEL_NUM);
   RGB color;
 
-  //this is silly, dunno what to do yet, but it stinks
-  int width = brot.getWidth();
-  int height = brot.getHeight();
-  int channels = brot.getChannels();
-
-  //the main loops that calculate the final value of the pixel
-  int index = 0;
   float percent = 0; //variable that stores percent completed per line
   float percentPrev = 0; //variable that stores the last displayed percentage
-  for(int j = 0; j < height; ++j)
+  for(int j = 0; j < brot.getHeight(); ++j)
   {
-    for(int i = 0; i < width; ++i)
+    for(int i = 0; i < brot.getWidth(); ++i)
     {
       complex<long double> point = plane.getValue(i,j);
       int value = evaluate(point, MAX_ITERATIONS);
       color = getColor(value);
 
-      /*
-      cout << "The complex point " << point << " at (" << i << ',' << j << ") iterates " << value;
-      cout << " times. it has a color of (" << (int)color.r << ',' << (int)color.g << ',' << (int)color.b << ")" << endl;
-      */
-  
       brot.setPixel(i,j,color);
     }
     //we want to display the percentage of the image completed
     //but there's 2500+ lines, we want to only display about 100 every time our percent increases by an integer
     //so we round off the float, then check if we're higher than the last time
-    percent = round((float)j / height * 100); //run after every line
+    percent = round((float)j / brot.getHeight() * 100); //run after every line
     if(percent > percentPrev)
     {
       percentPrev = percent;
-      cout << "Finished row " << j << " out of " << height << ", " << percent << "\% done" << endl;
+      cout << "Finished row " << j << " out of " << brot.getHeight() << ", " << percent << "\% done" << endl;
     }
   }
 

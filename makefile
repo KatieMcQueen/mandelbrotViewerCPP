@@ -1,5 +1,5 @@
 mandelbrot: mandelbrot.cpp stb_image_write.o imageLib.o complexLib.o
-	g++ mandelbrot.cpp stb_image_write.o imageLib.o complexLib.o -o mandelbrot
+	g++ mandelbrot.cpp stb_image_write.o imageLib.o complexLib.o -o mandelbrot -Ofast -Wall -Wextra -Werror
 stb_image_write.o: stb_image_write.cpp
 	g++ stb_image_write.cpp -c
 stb_image_write.cpp: stb_image_write.h
