@@ -1,5 +1,4 @@
 /*
- * this header is an evolutionary dead end, I realized the process would be faster and less error prone if I don't have to manage two giant arrays
  */
 #pragma once
 #include<complex>
