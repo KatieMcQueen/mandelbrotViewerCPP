@@ -1,0 +1,26 @@
+create mandelbrot structure
+  combine complex field structure into the mandelbrot structure
+  create cli args parser
+define colormap format
+create colormap reader
+check imports
+fix makefile
+
+Program process:
+create a mandelbrot structure
+(holds state values related to the mandelbrot set
+(position, radius, iterations, options))
+read command line arguments
+store relevant arguments in the mandelbrot structure
+create a colormap structure
+  read the colormap in from disk
+create and image writer
+pass the writer the info it needs
+(height, width, ect)
+calculate a pixel's coordinate
+evaluate that coordinate
+get the color of that pixel from the iterations
+write it to the image structure
+repeat a lot
+write the image to disk
+repeat?

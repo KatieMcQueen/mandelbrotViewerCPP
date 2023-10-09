@@ -2,7 +2,10 @@
 #include<complex>
 #include<string>
 
-class Runner
+//include the complexField functionality into here
+//maybe mandelbrot contains a member class that stores state
+
+class Mandelbrot
 {
   private:
     int iterations = 1024;
@@ -16,8 +19,4 @@ class Runner
     void parseArgs(int argc, const char **argv);
   public:
     void run();
-    int getIterations();
-    {return iterations;}
-    int getWitdth();
-    {return imageWidth;}
-
+}

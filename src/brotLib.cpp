@@ -1,6 +1,6 @@
 #include"brotLib.hpp"
 
-int Runner::evaluate(complex<long double> c, int iterations)
+int Mandelbrot::evaluate(complex<long double> c, int iterations)
 {
   complex<long double> z = 0;
   for(int i = 0; i < iterations; i++)
@@ -19,7 +19,7 @@ int Runner::evaluate(complex<long double> c, int iterations)
 }
 
 //adds the timestamp to a name string
-const char* Runner::makeName(string name)
+const char* Mandelbrot::makeName(string name)
 {
   //begin time and date fuckery
   //credit to the cppreference.com page explaining strftime() this would have sucked way more to figure out without it
