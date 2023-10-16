@@ -1,7 +1,7 @@
 #include"imageLib.hpp"
 #include<cstdint>
 #include<iostream>
-#include"stb_image_write.h"
+#include"stbImage/stb_image_write.h"
 
 using namespace std;
 

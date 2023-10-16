@@ -1,5 +1,4 @@
 #pragma once
-#include"colorLib.hpp"
 #include"RGB.hpp"
 
 class Image
