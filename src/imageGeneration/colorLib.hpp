@@ -15,7 +15,8 @@ class ColorMap
     int length;
     bool normalized;
     double* buildMap(string fileName); //build a color map from file. 
+    RGB normalToRGB(double *value);
+    uint8_t normalToChanel(double value);
   public:
     RGB getColor(int value);
-    RGB normalToRGB(double *value);
 }
