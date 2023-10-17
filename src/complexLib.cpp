@@ -27,12 +27,4 @@ ComplexField::ComplexField(int w, int h, complex<long double> c1, complex<long d
 //get the complex value of a pixel
 complex<long double> ComplexField::getValue(int x, int y)
 {
-  //see complexScaling.png for a visual explanation of this algorithm.
-  //we just need to pick a complex value closest to our given pixel
-  long double scalerx = (float)x / (float)width;
-  long double scalery = (float)y / (float)height;
-  long double realComponent = widthImaginary * scalerx + cornerReal;
-  long double imaginaryComponent = heightImaginary * scalery + cornerImaginary;
-  complex<long double> complexPoint(realComponent, imaginaryComponent);
-  return complexPoint;
-}
+  }

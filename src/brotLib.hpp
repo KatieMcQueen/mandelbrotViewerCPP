@@ -17,9 +17,9 @@ class Mandelbrot
 
     bool autoName = true; //should the program automatically name the render
 
-    string name = "render";
+    std::string name = "render";
 
-    string path = "images/"
+    std::string path = "images/";
 
     std::complex<long double> corner1; //the bottom left corner of our window into the imaginary plane
 
@@ -36,14 +36,16 @@ class Mandelbrot
     long double cornerImaginary;
 
     //evaluates whether a point is in the mandelbrot set
-    int evaluate(complex<long double> c, int iterations);
+    int evaluate(std::complex<long double> c, int iterations);
     
     std::complex<long double> getComplexValue(int x, int y);
 
-    const char* makeName(string name);
+    const char* makeName(std::string name);
 
     void parseArgs(int argc, const char **argv);
 
+    Mandelbrot(int iterations, int imageWidth, int imageHeight);
+
   public:
     void run();
-}
+};

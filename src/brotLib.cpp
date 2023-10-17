@@ -1,25 +1,31 @@
 #include"brotLib.hpp"
 
-int Mandelbrot::evaluate(complex<long double> c, int iterations)
+int Mandelbrot::evaluate(std::complex<long double> c, int iterations)
 {
-  complex<long double> z = 0;
-  for(int i = 0; i < iterations; i++)
+  std::complex<long double> z = 0;
+  //go to the nuber of iterations
+  //unless we break out of the set early
+  int i;
+  for(i = 0; i < iterations && (abs(z) < 2); i++)
   {
-    //this is the definition of the mandelbrot any number that stays bounded to less than 2 is in the set
+    //this is the definition of the mandelbrot 
+    //any number that stays bounded to less than 2 is in the set
     z = (z*z) + c;
-    if(abs(z) > 2)
-    {
-      //if it's greater than 2 it's value will explode and we don't care.
-      //it's said to not be in the mandelbrot set
-      //all we need is the number of iterations before it escapes, we can use this to color our picture
-      return i;
-    }
   }
-  return -1;
+  if(i < iterations)
+  {
+    //we're out of the set, give a coloration
+    return i;
+  }
+  else
+  {
+    //we're in the set return a sentinel of -1
+    return -1;
+  }
 }
 
 //adds the timestamp to a name string
-const char* Mandelbrot::makeName(string name)
+const char* Mandelbrot::makeName(std::string name)
 {
   //begin time and date fuckery
   //credit to the cppreference.com page explaining strftime() this would have sucked way more to figure out without it
@@ -38,9 +44,22 @@ const char* Mandelbrot::makeName(string name)
   //so we just prefix our time with &
   //end time and date fuckery
   time_t myTime = time(nullptr); //I forgot. this sometimes takes a time object, the null pointer to keeps it happy
-  char timeString[size("yyyy-mm-dd_hh:mm:ss")];
-  strftime(data(timeString), size(timeString), "%F_%T", gmtime(&myTime));
+  char timeString[std::size("yyyy-mm-dd_hh:mm:ss")];
+  strftime(std::data(timeString), std::size(timeString), "%F_%T", gmtime(&myTime));
 
   name = "images/" + name + '_' + timeString + ".png";
   return name.c_str();
+}
+
+
+std::complex<long double> Mandelbrot::getComplexValue(int x, int y)
+{
+  //see complexScaling.png for a visual explanation of this algorithm.
+  //we just need to pick a complex value closest to our given pixel
+  long double scalerx = (float)x / (float)imageWidth;
+  long double scalery = (float)y / (float)imageHeight;
+  long double realComponent = widthImaginary * scalerx + cornerReal;
+  long double imaginaryComponent = heightImaginary * scalery + cornerImaginary;
+  std::complex<long double> complexPoint(realComponent, imaginaryComponent);
+  return complexPoint;
 }
